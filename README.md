@@ -19,12 +19,14 @@ Video Memory: 128 MB
 Ubuntu Server iso
 Adapter 1: NAT
 Adpater 2: management one
-Adapter 3: monitored one with promiscious mode on
+Adapter 3: monitored one with promiscious mode on to all VMs
 
-=Victom VM:
+Victom VM:
 Base Memory: 8048 MB  
 Processors: 3  
 Video Memory: 128 MB  
 Ubuntu Server ISO 24.04.02
 Adatper 1: intnet_lab, promisicious mode  
 Adapter 2: Host only adapter
+
+Get the IDS/IPS VM set up and going on it. Once set up run the sudo apt install chromium-browser -y command
