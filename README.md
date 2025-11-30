@@ -30,3 +30,10 @@ Adatper 1: intnet_lab, promisicious mode
 Adapter 2: Host only adapter
 
 Get the IDS/IPS VM set up and going on it. Once set up run the sudo apt install chromium-browser -y command
+<img width="1282" height="804" alt="image" src="https://github.com/user-attachments/assets/93551647-6991-41d5-9df9-1066d682697f" />  
+Then run the command: sudo nano /etc/netplan/00-installer-config.yaml and add this to the file:  
+<img width="808" height="575" alt="image" src="https://github.com/user-attachments/assets/2d1e1222-db37-4bef-88a1-9ae254fc208e" />  
+Then save it and run sudo netplan apply.  
+Next time to install Snort onto the system.  
+
+
