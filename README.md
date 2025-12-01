@@ -58,6 +58,17 @@ cd snort-2.9.20
 ./configure --enable-sourcefire  
 make  
 sudo make install  
+Then do snort -V to verify its the right version.  
+
+Then go make these directories for snort:  
+sudo mkdir -p /etc/snort/rules  
+sudo mkdir -p /etc/snort/rules/iplists  
+sudo mkdir -p /etc/snort/preproc_rules  
+sudo mkdir -p /var/log/snort  
+sudo mkdir -p /var/log/snort/archived_logs  
+sudo mkdir -p /usr/local/lib/snort_dynamicrules  
+
+
 
 
 
