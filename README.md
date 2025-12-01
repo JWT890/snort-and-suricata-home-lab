@@ -34,6 +34,32 @@ Get the IDS/IPS VM set up and going on it. Once set up run the sudo apt install 
 Then run the command: sudo nano /etc/netplan/00-installer-config.yaml and add this to the file:  
 <img width="808" height="575" alt="image" src="https://github.com/user-attachments/assets/2d1e1222-db37-4bef-88a1-9ae254fc208e" />  
 Then save it and run sudo netplan apply.  
-Next time to install Snort onto the system.  
+Then type sudo ip link set enp0s9 promisc on and ip link show enp0s9.  
+Next time to install Snort onto the system. Type the command sudo apt install -y snort and run it to install Snort.  
+Then verify it by running sudo snort -V:  
+<img width="816" height="576" alt="image" src="https://github.com/user-attachments/assets/8dd47820-78fd-4227-9c45-569f20a95ae0" />  
+To do Snort 2.9.7:  
+sudo apt install -y build-essential libpcap-dev libpcre3-dev \  
+  libdumbnet-dev bison flex zlib1g-dev liblzma-dev \  
+  openssl libssl-dev ethtool git  
+
+cd /tmp
+wget https://www.snort.org/downloads/snort/daq-2.0.7.tar.gz  
+tar -xvzf daq-2.0.7.tar.gz  
+cd daq-2.0.7  
+./configure  
+make
+sudo make install
+
+To do Snort 2.9.20:
+wget https://www.snort.org/downloads/snort/snort-2.9.20.tar.gz  
+tar -xvzf snort-2.9.20.tar.gz  
+cd snort-2.9.20  
+./configure --enable-sourcefire  
+make  
+sudo make install  
+
+
+
 
 
