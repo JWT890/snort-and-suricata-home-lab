@@ -67,6 +67,10 @@ sudo mkdir -p /etc/snort/preproc_rules
 sudo mkdir -p /var/log/snort  
 sudo mkdir -p /var/log/snort/archived_logs  
 sudo mkdir -p /usr/local/lib/snort_dynamicrules  
+Then create the files needed for snort by typing the commands:  
+sudo touch /etc/snort/rules/white_list.rules  
+sudo touch /etc/snort/rules/black_list.rules  
+sudo touch /etc/snort/rules/local.rules  
 
 
 
