@@ -96,6 +96,33 @@ Then around line 546:
 Uncomment output log_tcpdump: tcpdump.log and add output alert_fast: alert.txt  
 and go down to the bottom of the file and type include $RULE_PATH/local.rules  
 Then save it and type sudo nano /etc/snort/rules/local.rules  
+Enter these in:  
+# ICMP Rules  
+alert icmp any any -> $HOME_NET any (msg:"SURICATA ICMP Ping Detected"; sid:2000001; rev:1;)  
+alert icmp any any -> any any (msg:"SURICATA ICMP Echo Request"; itype:8; sid:2000002; rev:1;)  
+
+# TCP Rules  
+alert tcp any any -> $HOME_NET 22 (msg:"SURICATA SSH Connection"; flow:to_server; flags:S; sid:2000003; rev:1;)  
+alert tcp any any -> $HOME_NET 80 (msg:"SURICATA HTTP Request"; flow:to_server; sid:2000004; rev:1;)  
+alert tcp any any -> $HOME_NET 21 (msg:"SURICATA FTP Connection"; sid:2000005; rev:1;)  
+alert tcp any any -> $HOME_NET 23 (msg:"SURICATA TELNET Connection"; sid:2000006; rev:1;)  
+alert tcp any any -> $HOME_NET 3306 (msg:"SURICATA MySQL Connection"; sid:2000007; rev:1;)  
+
+# Port Scan Detection  
+alert tcp any any -> $HOME_NET any (msg:"SURICATA Possible SYN Scan"; flags:S; threshold:type both, track by_src, count 20, seconds 60; sid:2000008; rev:1;)  
+
+# HTTP Attacks  
+alert http any any -> $HOME_NET any (msg:"SURICATA Possible SQL Injection in URI"; flow:established,to_server; content:"union"; nocase; http_uri; content:"select"; nocase; http_uri; sid:2000009; rev:1;)  
+alert http any any -> $HOME_NET any (msg:"SURICATA Possible XSS in URI"; flow:established,to_server; content:"<script"; nocase; http_uri; sid:2000010; rev:1;)  
+alert http any any -> $HOME_NET any (msg:"SURICATA Directory Traversal Attempt"; flow:established,to_server; content:"../"; http_uri; sid:2000011; rev:1;)  
+
+# Nmap Detection  
+alert tcp any any -> $HOME_NET any (msg:"SURICATA NMAP XMAS Scan"; flags:FPU,12; sid:2000012; rev:1;)  
+alert tcp any any -> $HOME_NET any (msg:"SURICATA NMAP NULL Scan"; flags:0; sid:2000013; rev:1;)  
+alert tcp any any -> $HOME_NET any (msg:"SURICATA NMAP FIN Scan"; flags:F,12; sid:2000014; rev:1;)  
+
+# SSH Brute Force  
+alert ssh any any -> $HOME_NET 22 (msg:"SURICATA Possible SSH Brute Force"; flow:to_server; threshold:type both, track by_src, count 5, seconds 60; sid:2000015; rev:1;)  
 
 
 
