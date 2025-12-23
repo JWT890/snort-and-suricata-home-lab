@@ -72,7 +72,30 @@ sudo touch /etc/snort/rules/white_list.rules
 sudo touch /etc/snort/rules/black_list.rules  
 sudo touch /etc/snort/rules/local.rules  
 
+Then type cd /tmp/snort-2.9.20/etc/  
+sudo cp *.conf* /etc/snort/  
+sudo cp *.map /etc/snort/  
+sudo cp *.dtd /etc/snort/  
 
+Then set the file permissions  
+sudo chmod -R 5775 /etc/snort  
+sudo chmod -R 5775 /var/log/snort  
+sudo chmod -R 5775 /usr/local/lib/snort_dynamicrules  
+
+Then type sudo nano /etc/snort/snort.conf  
+Go to line around 45 and change HOME_NET to 192.168.56.0/24 and ipvar EXTERNAL_NET to !$HOME_NET  
+Then go to line 104 and change these:  
+var RULE_PATH /etc/snort/rules  
+var SO_RULE_PATH /etc/snort/so_rules  
+var PREPROC_RULE_PATH /etc/snort/preproc_rules  
+To include the snort paths  
+At around line 109:  
+var WHITE_LIST_PATH /etc/snort/rules  
+var BLACK_LIST_PATH /etc/snort/rules  
+Then around line 546:  
+Uncomment output log_tcpdump: tcpdump.log and add output alert_fast: alert.txt  
+and go down to the bottom of the file and type include $RULE_PATH/local.rules  
+Then save it and type sudo nano /etc/snort/rules/local.rules  
 
 
 
