@@ -29,6 +29,7 @@ Ubuntu Server ISO 24.04.02
 Adatper 1: intnet_lab, promisicious mode  
 Adapter 2: Host only adapter
 
+# Snort installation
 Get the IDS/IPS VM set up and going on it. Once set up run the sudo apt install chromium-browser -y command
 <img width="1282" height="804" alt="image" src="https://github.com/user-attachments/assets/93551647-6991-41d5-9df9-1066d682697f" />  
 Then run the command: sudo nano /etc/netplan/00-installer-config.yaml and add this to the file:  
@@ -125,6 +126,11 @@ alert tcp any any -> $HOME_NET any (msg:"SURICATA NMAP FIN Scan"; flags:F,12; si
 alert ssh any any -> $HOME_NET 22 (msg:"SURICATA Possible SSH Brute Force"; flow:to_server; threshold:type both, track by_src, count 5, seconds 60; sid:2000015; rev:1;)  
 *Note you might need to comment out different things such as ftp_telnet through gtp. Use the command sudo sed -i 's/preprocesser ftp_telnet/# preprocessor ftp_telnet/g' /etc/snort/snort.conf until you reach gtp*  
 *You might also need to replace the entirety of /etc/snort/rules/local.rules with a different ruleset but that can be if needed. Will add the rules as needed.*
+Next type sudo nano /etc/systemd/system/snort.service and enter in this information:  
+<img width="1132" height="535" alt="image" src="https://github.com/user-attachments/assets/429ffb38-33e8-4e8b-8a3f-96a35e2fde9d" />  
+After that run sudo systemctl daemon-reload, them sudo systemctl enable snort, sudo systemctl start snort, then sudo systemctl status snort.  
+# Suricata Installation
+
 
 
 
