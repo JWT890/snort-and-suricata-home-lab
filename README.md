@@ -124,6 +124,7 @@ alert tcp any any -> $HOME_NET any (msg:"SURICATA NMAP FIN Scan"; flags:F,12; si
 # SSH Brute Force  
 alert ssh any any -> $HOME_NET 22 (msg:"SURICATA Possible SSH Brute Force"; flow:to_server; threshold:type both, track by_src, count 5, seconds 60; sid:2000015; rev:1;)  
 *Note you might need to comment out different things such as ftp_telnet through gtp. Use the command sudo sed -i 's/preprocesser ftp_telnet/# preprocessor ftp_telnet/g' /etc/snort/snort.conf until you reach gtp*  
+*You might also need to replace the entirety of /etc/snort/rules/local.rules with a different ruleset but that can be if needed. Will add the rules as needed.*
 
 
 
