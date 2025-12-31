@@ -140,6 +140,22 @@ port groups:
 <img width="467" height="303" alt="image" src="https://github.com/user-attachments/assets/1644d6af-6066-4ed1-8469-5c636e8c44b9" />  
 default-rule-paths:  
 <img width="491" height="134" alt="image" src="https://github.com/user-attachments/assets/ff9a218d-10d7-43ab-9c00-ee7737fde3c7" />  
+eve-log:  
+<img width="1091" height="476" alt="image" src="https://github.com/user-attachments/assets/8ea0a8f7-677f-4f98-9408-8171b5b2fe9d" />  
+dns:  
+<img width="381" height="178" alt="image" src="https://github.com/user-attachments/assets/b2224c23-4c9d-42ce-aaf4-5404d7d11587" />  
+stats:  
+<img width="224" height="84" alt="image" src="https://github.com/user-attachments/assets/fc5ca031-fd7d-456e-b68e-d9972b839783" />  
+Then type save and type sudo mkdir -p /etc/suricata.rules and then then type sudo nano /etc/suricata/rules/local.rules  
+<img width="1202" height="573" alt="image" src="https://github.com/user-attachments/assets/9d0fd348-95a3-4d0e-8a06-438b4f8b5c8b" />  
+or to get it to run differently just change HOME_NET under address groups to the ip address being used, af-packet interface to enp0s9, and add /etc/suricata/rules.local to rule-files and save it.  
+Then type sudo suricata -T -c /etc/suricata/suricata.yaml -v to test the configuration.  
+Then type sudo systemctl enable suricata, then sudo systemctl start suricata, then sudo systemctl status suricata to enable suricata.  
+
+# Attacker VM Setup  
+
+
+
 
 
 
