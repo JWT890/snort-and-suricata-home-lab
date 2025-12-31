@@ -130,6 +130,18 @@ Next type sudo nano /etc/systemd/system/snort.service and enter in this informat
 <img width="1132" height="535" alt="image" src="https://github.com/user-attachments/assets/429ffb38-33e8-4e8b-8a3f-96a35e2fde9d" />  
 After that run sudo systemctl daemon-reload, them sudo systemctl enable snort, sudo systemctl start snort, then sudo systemctl status snort.  
 # Suricata Installation
+To install Suricata first run the command sudo add-apt-repository ppa:oisf:/suricata-stable, then sudo apt update, then sudo apt install -y suricata jq.  
+Then to check the version run suricata-update --version.  
+Then run sudo suricata-update to add the rules.  
+Then to configure Suricata type the command sudo cp /etc/suricata/suricata.yaml /etc/suricata/suricata.yaml.backup then sudo nano /etc/suricata/suricata.yaml to edit several different sections.  
+vars should look like this:  
+<img width="669" height="406" alt="image" src="https://github.com/user-attachments/assets/826ff407-d655-4101-995e-e6145edf51da" />
+port groups:  
+<img width="467" height="303" alt="image" src="https://github.com/user-attachments/assets/1644d6af-6066-4ed1-8469-5c636e8c44b9" />  
+default-rule-paths:  
+<img width="491" height="134" alt="image" src="https://github.com/user-attachments/assets/ff9a218d-10d7-43ab-9c00-ee7737fde3c7" />  
+
+
 
 
 
