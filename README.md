@@ -10,7 +10,7 @@ Base Memory: 8048 MB
 Processors: 4  
 Video Memory: 128
 Kali Linux ISO  
-Adapter 1: 
+Adapter 1: same as IDS/IPS VPN
 
 IDS/IPS VM:  
 Base Memory: 8048 MB  
@@ -153,6 +153,17 @@ Then type sudo suricata -T -c /etc/suricata/suricata.yaml -v to test the configu
 Then type sudo systemctl enable suricata, then sudo systemctl start suricata, then sudo systemctl status suricata to enable suricata.  
 
 # Attacker VM Setup  
+Attacker VM Setup:  
+Base Memory: 8048 MB  
+Processors: 4  
+Video Memory: 128  
+Kali Linux ISO   
+Adapter 1: same as IDS/IPS VPN  
+
+After setting up the VM, type sudo nano /etc/network/interfaces and change the info in there to this:  
+<img width="710" height="296" alt="image" src="https://github.com/user-attachments/assets/227f899b-d7e4-42c3-867d-f211e5bdf9dd" />  
+
+
 
 
 
