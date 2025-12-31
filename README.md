@@ -26,8 +26,7 @@ Base Memory: 8048 MB
 Processors: 3  
 Video Memory: 128 MB  
 Ubuntu Server ISO 24.04.02
-Adatper 1: intnet_lab, promisicious mode  
-Adapter 2: Host only adapter
+Adatper 1: same as IDS/IPS one
 
 # Snort installation
 Get the IDS/IPS VM set up and going on it. Once set up run the sudo apt install chromium-browser -y command
@@ -152,7 +151,7 @@ or to get it to run differently just change HOME_NET under address groups to the
 Then type sudo suricata -T -c /etc/suricata/suricata.yaml -v to test the configuration.  
 Then type sudo systemctl enable suricata, then sudo systemctl start suricata, then sudo systemctl status suricata to enable suricata.  
 
-# Attacker VM Setup  
+# Attacker VM
 Attacker VM Setup:  
 Base Memory: 8048 MB  
 Processors: 4  
@@ -162,6 +161,25 @@ Adapter 1: same as IDS/IPS VPN
 
 After setting up the VM, type sudo nano /etc/network/interfaces and change the info in there to this:  
 <img width="710" height="296" alt="image" src="https://github.com/user-attachments/assets/227f899b-d7e4-42c3-867d-f211e5bdf9dd" />  
+Then type sudo nmtui and will be greeted by a GUI:  
+<img width="278" height="293" alt="image" src="https://github.com/user-attachments/assets/eec06919-21f6-4caf-ac12-3d1fb5694aaa" />  
+Click on edit connection and change ipv4 configuration to manual and add 192.168.56.10/24, gateway to 192.168.56.1, and dns to 8.8.8.8, then click on ok.  
+You will be then taken back to the GUI and click on Activate a connection and then will you see this GUi:  
+<img width="437" height="777" alt="image" src="https://github.com/user-attachments/assets/573e7d9a-cdeb-40ae-87e5-42efa8de17c4" />  
+Click on deactivate and then activate to turn back on the connection, then scroll down to back and click on quit.  
+Then type ip a show eth0 to verify the change.  
+Then to verify connectivity, type ping -c 3 192.168.56.5 and get this result:  
+<img width="630" height="208" alt="image" src="https://github.com/user-attachments/assets/8042b942-0d55-48b2-aa77-67bf978a1212" />  
+
+# Ubuntu Target VM Setup
+Victom VM:
+Base Memory: 8048 MB  
+Processors: 3  
+Video Memory: 128 MB  
+Ubuntu Server ISO 24.04.02  
+Adatper 1: intnet_lab, promisicious mode  
+Adapter 2: Host only adapter  
+
 
 
 
