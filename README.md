@@ -177,8 +177,12 @@ Base Memory: 8048 MB
 Processors: 3  
 Video Memory: 128 MB  
 Ubuntu Server ISO 24.04.02  
-Adatper 1: intnet_lab, promisicious mode  
-Adapter 2: Host only adapter  
+Adatper 1: same as IDS/IPS VM  
+After getting the Ubuntu VM after a while, go to the terminal and type sudo nano /etc/netplan/00-installer-config.yaml and enter in this information:  
+<img width="815" height="576" alt="image" src="https://github.com/user-attachments/assets/2e3589cd-558c-4636-9eb9-103ec0e3051f" />  
+Then type sudo apt update and then sudo apt install -y apache2 vsftpd openssh-server mysql-server telnetd xinetd  
+
+
 
 
 
