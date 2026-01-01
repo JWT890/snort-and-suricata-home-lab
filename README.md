@@ -182,6 +182,18 @@ After getting the Ubuntu VM after a while, go to the terminal and type sudo nano
 <img width="815" height="576" alt="image" src="https://github.com/user-attachments/assets/2e3589cd-558c-4636-9eb9-103ec0e3051f" />  
 Then type sudo apt update and then sudo apt install -y apache2 vsftpd openssh-server mysql-server telnetd xinetd  
 *Note you might want to change to bridged adapter for a few minutes to download the above*  
+Then type echo "<h1>Welcome to Vulnerable Web Server</h1> | sudo tee /var/html/index.html.  
+Then type sudo nano /var/www.html/test.php and put this info in there:  
+<img width="807" height="572" alt="image" src="https://github.com/user-attachments/assets/7a29724c-6aef-4c41-b1b0-be548ca7d4e7" />  
+Then type sudo enable apache2 vsftpd ssh mysql, then sudo systemctl start apache2 vsftpd ssh mysql  
+Then type sudo nano /etc/vsftpd.conf and uncomment write_enable=YES and add anonymous_enable=YES like below:  
+<img width="589" height="84" alt="image" src="https://github.com/user-attachments/assets/3285dab5-471f-48ff-941e-0572abdb4d56" />  
+Then type sudo netstat -tulpn and see this result:  
+<img width="1022" height="443" alt="image" src="https://github.com/user-attachments/assets/082d931a-974a-47c0-b521-ace39d10ff5c" />  
+
+
+
+
 
 
 
