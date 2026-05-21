@@ -195,6 +195,14 @@ Then type sudo nano /etc/vsftpd.conf and uncomment write_enable=YES and add anon
 <img width="589" height="84" alt="image" src="https://github.com/user-attachments/assets/3285dab5-471f-48ff-941e-0572abdb4d56" />  
 Then type sudo netstat -tulpn and see this result:  
 <img width="1022" height="443" alt="image" src="https://github.com/user-attachments/assets/082d931a-974a-47c0-b521-ace39d10ff5c" />  
+Next is to get xinetd and telnetd into the target VM, to download telnetd, open this link: http://security.ubuntu.com/ubuntu/pool/universe/i/inetutils/telnetd_0.17+2.5-3ubuntu4.1_all.deb. And it should download on the host computer.  
+To get xinetd to download, go the host computer in PowerShell and run this command: Invoke-WebRequest -Uri "http://archive.ubuntu.com/ubuntu/pool/universe/x/xinetd/xinetd_2.3.15.4-3build1_amd64.deb" -OutFile "$env:USERPROFILE\Downloads\xinetd.deb". It should download.  Also download http://mirrors.kernel.org/ubuntu/pool/main/b/bzip2/bzip2_1.0.8-5build1_amd64.deb  
+Then in the downloads section on the computer, create a folder named shared and put both downloads into it. Then in VirtualBox in VM settings -> Shared Folders, and click on the green icon that says add new shared folder  
+![Share](./images/folder.png) 
+Add the folder path with the name for folder name, then click on the options of read-only and make global. Then in the Target VM, run sudo mount -t vboxsf shared /media/shared, then ls /media/shared. 
+Then run sudo dpkg -i /media/shared/telnet*.deb. Then for the problems with xinetd run sudo dpkg -r inetutils-inetd, then run sudo dpkg -i /media/shared/xinetd*.deb. Then run the commands which telnetd, which xinetd, and xinetd -version to verify its working. 
+![Command](./images/preview.webp) 
+
 
 
 
